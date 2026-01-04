@@ -5,20 +5,29 @@ import pandas as pd
 import streamlit as st
 import json
 
+# ==========================
+# 데모 모드 (포트폴리오 안전)
+# ==========================
+DEMO_MODE = False  # True면 sample_data를 사용
+
+def data_path(real_path: str, demo_path: str):
+    return demo_path if DEMO_MODE else real_path
+
 # ==========================================================
 # 기본 설정
 # ==========================================================
 st.set_page_config(page_title="양복점 CRM 대시보드", layout="wide")
 
-DATA_DIR = "data_members"
-SETTINGS_DIR = "settings"
-os.makedirs(DATA_DIR, exist_ok=True)
-os.makedirs(SETTINGS_DIR, exist_ok=True)
+DATA_DIR = data_path("data_members", "sample_data")
+SETTINGS_DIR = "settings"  # 설정은 실데이터와 분리해도 됨(원하면 sample로 옮겨도 됨)
 
 MASTER_FILE = os.path.join(DATA_DIR, "members_master.xlsx")
 MEASURE_FILE = os.path.join(DATA_DIR, "members_measurements.xlsx")
 CONSULT_FILE = os.path.join(DATA_DIR, "consultations.xlsx")
-SIZE_RULE_FILE = os.path.join(SETTINGS_DIR, "size_rules.xlsx")
+ORDER_FILE = os.path.join(DATA_DIR, "orders.xlsx")  # 주문/작업지시서
+
+os.makedirs(DATA_DIR, exist_ok=True)
+os.makedirs(SETTINGS_DIR, exist_ok=True)
 
 # ==========================================================
 # 공통: 컬럼 표준/한글 매핑 (members/consult 내부처리용)
