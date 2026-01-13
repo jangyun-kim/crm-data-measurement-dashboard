@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "G:\My Drive\MyPortfolio\No2_data_automation\scripts\run_all.py", line 30, in main
+    stock_flat, stock_mov = transform_stock(stock_raw, year=TARGET_YEAR)
+  File "G:\My Drive\MyPortfolio\No2_data_automation\scripts\transform_stock.py", line 106, in transform_stock
+    stock_mov = build_stock_movement(flat)
+  File "G:\My Drive\MyPortfolio\No2_data_automation\scripts\transform_stock.py", line 96, in build_stock_movement
+    stock_mov = df[[
+  File "C:\Development\Venvs\PublicData\lib\site-packages\pandas\core\frame.py", line 4113, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+  File "C:\Development\Venvs\PublicData\lib\site-packages\pandas\core\indexes\base.py", line 6212, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "C:\Development\Venvs\PublicData\lib\site-packages\pandas\core\indexes\base.py", line 6264, in _raise_if_missing
+    raise KeyError(f"{not_found} not in index")
+KeyError: "['date', 'customer_name_raw', 'customer_code_raw', 'weekday', 'month', 'day'] not in index"

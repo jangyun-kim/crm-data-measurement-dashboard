@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "G:\My Drive\MyPortfolio\No2_data_automation\scripts\run_all.py", line 24, in main
+    delivery_flat_with_id, orders = transform_delivery_to_orders(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\My Drive\MyPortfolio\No2_data_automation\scripts\transform_orders.py", line 178, in transform_delivery_to_orders
+    flat_with_id = generate_order_ids(flat)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\My Drive\MyPortfolio\No2_data_automation\scripts\transform_orders.py", line 109, in generate_order_ids
+    df = df.sort_values(["customer_code_raw", "order_date"]).reset_index(drop=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\frame.py", line 7194, in sort_values
+    keys = [self._get_label_or_level_values(x, axis=axis) for x in by]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\generic.py", line 1914, in _get_label_or_level_values
+    raise KeyError(key)
+KeyError: 'customer_code_raw'

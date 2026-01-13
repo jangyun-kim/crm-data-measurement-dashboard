@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "G:\My Drive\MyPortfolio\No2_data_automation\scripts\run_all.py", line 38, in main
+    analyze_stock(stock_mov, year=TARGET_YEAR)
+TypeError: analyze_stock() got an unexpected keyword argument 'year'
