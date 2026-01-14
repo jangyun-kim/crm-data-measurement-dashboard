@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  consults  Consult[]
+
+  @@index([name])
+  @@index([phone])
+  @@unique([name, phone])
+}
+
+model Consult {
+  id         String   @id @default(cuid())
+  customerId String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // 상담지 전체 입력값을 그대로 저장 (좌표필드 id 그대로 들어감)
+  payload    Json
+
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@index([customerId, createdAt])
+}
